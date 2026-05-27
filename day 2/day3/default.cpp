@@ -1,22 +1,23 @@
 #include<iostream>
 using namespace std;
 
-class Student {
-    public
+class student {
+    public:
         string name;
         int age;
-
-        Student() {
-            name = "Unknown";
+        student() {
+            name = "unknown";
             age = 0;
-            cout<<"Default constructor called!"<<endl;
+            cout << "Default constructor called for: " << name << endl;
         }
-
-        void display(){
-            cout<<name<<"("<<age<<")"<<endl;
+        void display() {
+            cout << "Name: " << name << ", Age: " << age << endl;
         }
-}:
-
-int main(){
-    Student s1;gi
+};
+int main() {
+    student s1; 
+    s1.display();
+    student s2; 
+    s2.display();
+    return 0;
 }

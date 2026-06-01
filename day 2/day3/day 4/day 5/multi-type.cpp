@@ -1,72 +1,73 @@
-#include<iostream>
-#include<string>
+#include <iostream>
+#include <string>
 using namespace std;
-class person{
-    protected:
+
+class Employee {
+protected:
     string name;
-    int age;
-    public:
-    person(string n,int a):name(n),age(a){}
-    void display(){
-       cout<<"Name: "<<name<<endl;
-       cout<<"Age: "<<age<<endl;
-    }
-};
-class student: public person{
-    protected:
-          int rollno;
+    int empId;
+
 public:
-student(string n,int a,int r):person(n,a),rollno(r){}
-void display(){
-person::display();
-cout<<"Roll No: "<<rollno<<endl;
-}
-};
+    Employee(string n, int id) : name(n), empId(id) {}
 
-class Graduatestudent: public student{
-    private:
-    string thesisTopic;
-    public:
-    Graduatestudent(string n,int a,int r,string t):student(n,a,r),thesisTopic(t){}
-    void display(){
-        student::display();
-        cout<<"Thesis: "<<thesisTopic<<endl;        
+    void display() {
+        cout << "Employee Name: " << name << endl;
+        cout << "Employee ID: " << empId << endl;
+    }
+};
+class Manager : public Employee {
+protected:
+    string department;
+
+public:
+    Manager(string n, int id, string d)
+        : Employee(n, id), department(d) {}
+
+    void display() {
+        Employee::display();
+        cout << "Department: " << department << endl;
+    }
+};
+class TeamLead : public Manager {
+private:
+    int teamSize;
+
+public:
+    TeamLead(string n, int id, string d, int t)
+        : Manager(n, id, d), teamSize(t) {}
+
+    void display() {
+        Manager::display();
+        cout << "Team Size: " << teamSize << endl;
+    }
+};
+class HR : public Employee {
+private:
+    int recruitsHandled;
+
+public:
+    HR(string n, int id, int r)
+        : Employee(n, id), recruitsHandled(r) {}
+
+    void display() {
+        Employee::display();
+        cout << "Recruits Handled: " << recruitsHandled << endl;
     }
 };
 
-class Teacher: public person{
-    protected:
-         double salary;
-    public:
-    Teacher(string n,int a,double s):person(n,a),salary(s){}
-    void display(){
-        person::display();
-        cout<<"Salary: $ "<<salary<<endl;        
-    }
-};
+int main() {
 
-class TeachingAssistant: public student, public Teacher{
-    public:
-    TeachingAssistant(string n,int a,int r,double s):student(n,a,r),Teacher(n,a,s){}
+    cout << "=== Single Inheritance ===" << endl;
+    Manager m("Ravi", 101, "Sales");
+    m.display();
 
-    void display(){
-        cout<<"Teaching Assistant:"<<student::name<< endl;
-        cout<<"Age: "<<student::age<<",Roll:"<<student::rollno<<endl;
-    }
-};
+    cout << "\n=== Multilevel Inheritance ===" << endl;
+    TeamLead tl("Anita", 102, "IT", 8);
+    tl.display();
 
-int main(){
-    cout<<"=== single inheritance ==="<<endl;
-    student s1("Alice",20,101);
-    s1.display();
-
-    cout<<"\n=== multilevel inheritance ==="<<endl;
-    Graduatestudent gs("Bob",25,102,"AI Research");
-    gs.display();
-
-    cout<<"\n=== Hierarchical inheritance ==="<<endl;
-    Teacher t1("Charlie",35,50000);
-    t1.display();
+    cout << "\n=== Hierarchical Inheritance ===" << endl;
+    HR h("Priya", 103, 25);
+    h.display();
 
     return 0;
 }

@@ -19,3 +19,4 @@ int main() {
     d.display(10, 20);
     d.display(10, 20); 
     return 0;
+}

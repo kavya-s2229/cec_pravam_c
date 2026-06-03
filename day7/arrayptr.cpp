@@ -22,10 +22,11 @@ int main() {
     cin >> count;
 
     product* inventory = new product[count];
-
+    
+    double prices[] = {9.99, 19.99, 29.99, 39.99, 49.99};
     for (int i = 0; i < count; i++) {
-        inventory[i] = product(100 + 1, "Product" + to_string(i + 1), (i + 1) * 10.0);
-    }
+        inventory[i] = product(100 + i, "Product" + to_string(i + 1), prices[i]);   
+     };
     cout << "Inventory:" << endl;
     for (int i = 0; i < count; i++) {
         inventory[i].display();

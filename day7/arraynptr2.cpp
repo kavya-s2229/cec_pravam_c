@@ -13,7 +13,7 @@ public:
     T getFirst() const { return first; }
     T getSecond() const { return second; }
 
-    T getMax() const { return (first > second) ? first : second;}
+    T getMin() const { return (first < second) ? first : second;}
 
     void display() const {
         cout << "(" << first << ", " << second << ")" << endl;
@@ -38,13 +38,13 @@ int main() {
     Pair<string> p3("Apple", "Mango");
 
     cout <<"int Pair: "; p1.display();
-    cout<< "Min: " << p1.getMax() << endl;   
+    cout<< "Min: " << p1.getMin() << endl;   
 
     cout <<"double Pair: ";p2.display();
-    cout << "Min: " << p2.getMax() << endl;
+    cout << "Min: " << p2.getMin() << endl;
 
     cout <<"string Pair: ";p3.display();
-    cout << "Min: " << p3.getMax() << endl;
+    cout << "Min: " << p3.getMin() << endl;
 
     keyValue<int, string> kv(101,"kumuu");
     keyValue<string, double> kv2("pi", 3.14159);

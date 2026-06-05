@@ -1,0 +1,13 @@
+/task-manager-app
+  /public
+    index.html        → Login page
+    tasks.html        → Calendar + task list
+    style.css         → Styles
+  /js
+    auth.js           → Authentication
+    db.js             → Database + sync
+    calendar.js       → Calendar logic
+    tasks.js          → Task CRUD
+    app.js            → Entry point
+  /server
+    server.js         → Backend (optional)
